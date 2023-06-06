@@ -3,10 +3,13 @@
 <html lang="pt-br">
     <head>
         <meta charset="UTF-8" />
-        <title>Home</title>
+        <title>Jogos</title>
+        <link href="/css/bootstrap.min.css" rel="stylesheet" />
     </head>
     <body>
-        <h1>Olá Spring!!!</h1>
+        <h1>Jogos</h1>
+
+        <a class="btn btn-primary" href="/jogo/list">Jogos</a>
     </body>
 </html>
 
