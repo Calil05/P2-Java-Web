@@ -21,7 +21,7 @@ public class JogoController {
 
     @RequestMapping("/list")
     public String list(Model model) {
-        model.addAttribute("jogoRepo", jogoRepo.findAll());
+        model.addAttribute("jogos", jogoRepo.findAll());
         return "/jogo/list";
     }
 
@@ -31,7 +31,9 @@ public class JogoController {
     }
 
     @RequestMapping(value = "/insert", method = RequestMethod.POST)
-    public String insert(@RequestParam("titulo") String titulo, @RequestParam("anoDeLancamento") int anoDeLancamento ) {
+    public String insert(
+        @RequestParam("titulo") String titulo, 
+        @RequestParam("anoDeLancamento") int anoDeLancamento) {
         Jogo jogo = new Jogo();
         jogo.setTitulo(titulo);
         jogo.setAnoDeLancamento(anoDeLancamento);
@@ -44,12 +46,13 @@ public class JogoController {
     public String upadete(Model model, @RequestParam("id") int id) {
         Optional<Jogo> jogo = jogoRepo.findById(id);
 
-        if(!jogo.isPresent()) {
-            return "redirect:/jogo/list";
+        if(jogo.isPresent()) {
+            model.addAttribute("jogo", jogo.get());
+            return "/jogo/list";
         }
 
-        model.addAttribute("jogo", jogo.get());
-        return "update";
+        
+        return "redirect:/jogo/list";
     
     }
 
@@ -60,14 +63,13 @@ public class JogoController {
         @RequestParam("anoDeLancamento") int anoDeLancamento
     ) {
         Optional<Jogo> jogo = jogoRepo.findById(id);
-        if(!jogo.isPresent()) {
-            return "redirect:/jogo/list";
+
+        if(jogo.isPresent()) {
+            jogo.get().setTitulo(titulo);
+            jogo.get().setAnoDeLancamento(anoDeLancamento);
+            jogoRepo.save(jogo.get());
         }
-
-        jogo.get().setTitulo(titulo);
-        jogo.get().setAnoDeLancamento(anoDeLancamento);
-
-        jogoRepo.save(jogo.get());
+        
         return "redirect:/jogo/list";
 
     }
@@ -76,17 +78,18 @@ public class JogoController {
     public String delete(Model model, @RequestParam("id") int id) {
         Optional<Jogo> jogo = jogoRepo.findById(id);
         
-        if(!jogo.isPresent()) {
-            return "redirect:/jogo/list";
+        if(jogo.isPresent()) {
+            model.addAttribute("jogo", jogo.get());
+            return "/jogo/delete";
         }
 
-        model.addAttribute("jogo", jogo.get());
-        return "delete";
+        return "redirect:/jogo/list";
     }
 
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     public String delete(@RequestParam("id") int id) {
         jogoRepo.deleteById(id);
+        
         return "redirect:/jogo/list";
     }
     
