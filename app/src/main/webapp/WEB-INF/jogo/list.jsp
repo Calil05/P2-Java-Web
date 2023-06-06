@@ -9,7 +9,7 @@
     </head>
     <body>
         <div class="container">
-        <h1>Livros</h1>
+            <h1>Jogos</h1>
             <a href="/jogo/insert" class="btn btn-primary">Novo Jogo</a>
             <table class="table">
                 <tr>
@@ -22,7 +22,7 @@
                     <tr>
                         <td>${item.id}</td>
                         <td>${item.titulo}</td>
-                        <td>${item.anoDeLancamento/td>
+                        <td>${item.anoDeLancamento}</td>
                         <td>
                             <a href="/jogo/update?id=${item.id}" class="btn btn-warning">Editar</a>
                             <a href="/jogo/delete?id=${item.id}" class="btn btn-danger">Excluir</a>

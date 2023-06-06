@@ -48,7 +48,7 @@ public class JogoController {
 
         if(jogo.isPresent()) {
             model.addAttribute("jogo", jogo.get());
-            return "/jogo/list";
+            return "/jogo/update";
         }
 
         
@@ -89,7 +89,7 @@ public class JogoController {
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     public String delete(@RequestParam("id") int id) {
         jogoRepo.deleteById(id);
-        
+
         return "redirect:/jogo/list";
     }
     
