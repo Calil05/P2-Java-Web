@@ -12,7 +12,7 @@ public class Jogo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String nome;
+    private String titulo;
     private int anoDeLancamento;
 
     public int getId() {
@@ -22,11 +22,11 @@ public class Jogo {
         this.id = id;
     }
 
-    public String getNome() {
-        return nome;
+    public String getTitulo() {
+        return titulo;
     }
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
     }
     
     public int getAnoDeLancamento() {
