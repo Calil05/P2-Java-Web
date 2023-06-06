@@ -17,7 +17,7 @@
                 </div>
                 <div class="form-group">
                     <label for="isbn">Ano de Lançamento:</label>
-                    <input type="text" name="anoDeLancamento class="form-control" value="${jogo.anoDeLancamento}" />
+                    <input type="text" name="anoDeLancamento" class="form-control" value="${jogo.anoDeLancamento}" />
                 </div>
                 <br />
                 <a href="/jogo/list" class="btn btn-primary" >Voltar</a>
